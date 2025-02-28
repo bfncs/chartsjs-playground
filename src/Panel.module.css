@@ -18,3 +18,33 @@
 .content {
 	height: 18em;
 }
+
+.kpiWrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.kpiWrapper > * {
+	margin: 0 0.2em 0.4em;
+}
+
+.kpiWrapper > :first-child {
+	margin-left: 0;
+}
+
+.kpiValue {
+	font-size: 3em;
+	font-weight: bold;
+}
+
+.kpiChange,
+.kpiChangeExplanation {
+	color: #008353;
+}
+
+.kpiChange {
+	display: inline-block;
+	font-size: 2em;
+	background: #f5fff9;
+}

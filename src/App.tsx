@@ -95,13 +95,27 @@ function App() {
 				<h1>Analyse</h1>
 			</header>
 			<main className={styles.wrapper}>
-				<Panel title={"Verteilung der Anrufe"}>
+				<Panel
+					title={"Verteilung der Anrufe"}
+					kpiValue={"420"}
+					kpiChange={"+8%"}
+				>
 					<Bar options={options} data={data} />
 				</Panel>
-				<Panel title={"Verteilung der Anrufe"} halfWidth>
+				<Panel
+					title={"Anzahl Anrufe"}
+					kpiValue={"378"}
+					kpiChange={"-5%"}
+					halfWidth
+				>
 					<Bar options={options} data={data} />
 				</Panel>
-				<Panel title={"Verteilung der Anrufe"} halfWidth>
+				<Panel
+					title={"Erreichbarkeitsquote"}
+					kpiValue={"84%"}
+					kpiChange={"+5%"}
+					halfWidth
+				>
 					<Bar options={options} data={data} />
 				</Panel>
 			</main>
