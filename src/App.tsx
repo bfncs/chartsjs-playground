@@ -12,6 +12,7 @@ import { faker } from "@faker-js/faker";
 import { eachDayOfInterval, format } from "date-fns";
 
 import { Panel } from "./Panel.tsx";
+import styles from "./App.module.css";
 
 ChartJS.register(
 	CategoryScale,
@@ -24,11 +25,15 @@ ChartJS.register(
 
 function App() {
 	const options = {
-		categoryPercentage: 0.7,
 		responsive: true,
+		maintainAspectRatio: false,
+		categoryPercentage: 0.7,
 		scales: {
 			x: {
 				stacked: true,
+				grid: {
+					display: false,
+				},
 			},
 			y: {
 				stacked: true,
@@ -36,7 +41,7 @@ function App() {
 		},
 		plugins: {
 			legend: {
-				position: "bottom" as const,
+				display: false,
 			},
 			title: {
 				display: false,
@@ -58,28 +63,28 @@ function App() {
 		labels: labels.map((d) => format(d, "dd.MM.")),
 		datasets: [
 			{
-				label: "Eingehend (dieser Monat)",
-				data: labels.map(() => faker.number.int({ min: 0, max: 150 })),
-				backgroundColor: "rgba(255, 99, 132, 0.5)",
-				stack: "Dieser Monat",
-			},
-			{
-				label: "Ausgehend (dieser Monat)",
-				data: labels.map(() => faker.number.int({ min: 0, max: 100 })),
-				backgroundColor: "rgba(53, 162, 235, 0.5)",
-				stack: "Dieser Monat",
-			},
-			{
 				label: "Eingehend (letzter Monat)",
 				data: labels.map(() => faker.number.int({ min: 0, max: 150 })),
-				backgroundColor: "rgba(255, 99, 132, 0.5)",
-				stack: "Letzter Monat",
+				backgroundColor: "#C0CFFF",
+				stack: "lastMonth",
 			},
 			{
 				label: "Ausgehend (letzter Monat)",
 				data: labels.map(() => faker.number.int({ min: 0, max: 100 })),
-				backgroundColor: "rgba(53, 162, 235, 0.5)",
-				stack: "Letzter Monat",
+				backgroundColor: "#D4FBF8",
+				stack: "lastMonth",
+			},
+			{
+				label: "Eingehend (dieser Monat)",
+				data: labels.map(() => faker.number.int({ min: 0, max: 150 })),
+				backgroundColor: "#315DFF",
+				stack: "currentMonth",
+			},
+			{
+				label: "Ausgehend (dieser Monat)",
+				data: labels.map(() => faker.number.int({ min: 0, max: 100 })),
+				backgroundColor: "#32E0DB",
+				stack: "currentMonth",
 			},
 		],
 	};
@@ -89,8 +94,14 @@ function App() {
 			<header>
 				<h1>Analyse</h1>
 			</header>
-			<main>
+			<main className={styles.wrapper}>
 				<Panel title={"Verteilung der Anrufe"}>
+					<Bar options={options} data={data} />
+				</Panel>
+				<Panel title={"Verteilung der Anrufe"} halfWidth>
+					<Bar options={options} data={data} />
+				</Panel>
+				<Panel title={"Verteilung der Anrufe"} halfWidth>
 					<Bar options={options} data={data} />
 				</Panel>
 			</main>
