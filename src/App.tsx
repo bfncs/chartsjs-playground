@@ -24,13 +24,27 @@ ChartJS.register(
 
 function App() {
 	const options = {
+		categoryPercentage: 0.7,
 		responsive: true,
+		scales: {
+			x: {
+				stacked: true,
+			},
+			y: {
+				stacked: true,
+			},
+		},
 		plugins: {
 			legend: {
 				position: "bottom" as const,
 			},
 			title: {
 				display: false,
+			},
+		},
+		elements: {
+			bar: {
+				borderRadius: 3,
 			},
 		},
 	};
@@ -44,14 +58,28 @@ function App() {
 		labels: labels.map((d) => format(d, "dd.MM.")),
 		datasets: [
 			{
-				label: "Dataset 1",
+				label: "Eingehend (dieser Monat)",
 				data: labels.map(() => faker.number.int({ min: 0, max: 150 })),
 				backgroundColor: "rgba(255, 99, 132, 0.5)",
+				stack: "Dieser Monat",
 			},
 			{
-				label: "Dataset 2",
+				label: "Ausgehend (dieser Monat)",
 				data: labels.map(() => faker.number.int({ min: 0, max: 100 })),
 				backgroundColor: "rgba(53, 162, 235, 0.5)",
+				stack: "Dieser Monat",
+			},
+			{
+				label: "Eingehend (letzter Monat)",
+				data: labels.map(() => faker.number.int({ min: 0, max: 150 })),
+				backgroundColor: "rgba(255, 99, 132, 0.5)",
+				stack: "Letzter Monat",
+			},
+			{
+				label: "Ausgehend (letzter Monat)",
+				data: labels.map(() => faker.number.int({ min: 0, max: 100 })),
+				backgroundColor: "rgba(53, 162, 235, 0.5)",
+				stack: "Letzter Monat",
 			},
 		],
 	};
