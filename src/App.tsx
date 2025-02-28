@@ -9,6 +9,8 @@ import {
 	Tooltip,
 } from "chart.js";
 import { faker } from "@faker-js/faker";
+import { eachDayOfInterval, format } from "date-fns";
+
 import { Panel } from "./Panel.tsx";
 
 ChartJS.register(
@@ -22,47 +24,33 @@ ChartJS.register(
 
 function App() {
 	const options = {
-		indexAxis: "y" as const,
-		elements: {
-			bar: {
-				borderWidth: 2,
-			},
-		},
 		responsive: true,
 		plugins: {
 			legend: {
-				position: "right" as const,
+				position: "bottom" as const,
 			},
 			title: {
-				display: true,
-				text: "Chart.js Horizontal Bar Chart",
+				display: false,
 			},
 		},
 	};
 
-	const labels = [
-		"January",
-		"February",
-		"March",
-		"April",
-		"May",
-		"June",
-		"July",
-	];
+	const labels = eachDayOfInterval({
+		start: new Date(2025, 1, 28),
+		end: new Date(2025, 2, 28),
+	});
 
 	const data = {
-		labels,
+		labels: labels.map((d) => format(d, "dd.MM.")),
 		datasets: [
 			{
 				label: "Dataset 1",
-				data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
-				borderColor: "rgb(255, 99, 132)",
+				data: labels.map(() => faker.number.int({ min: 0, max: 150 })),
 				backgroundColor: "rgba(255, 99, 132, 0.5)",
 			},
 			{
 				label: "Dataset 2",
-				data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
-				borderColor: "rgb(53, 162, 235)",
+				data: labels.map(() => faker.number.int({ min: 0, max: 100 })),
 				backgroundColor: "rgba(53, 162, 235, 0.5)",
 			},
 		],
