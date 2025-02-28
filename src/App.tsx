@@ -99,12 +99,6 @@ function App() {
 					kpiChange={"+8%"}
 				>
 					<Bar options={options} data={data} />
-					<div>
-						<div>
-							<h3>Letzter Monat</h3>
-						</div>
-						<div></div>
-					</div>
 				</Panel>
 				<Panel
 					title={"Anzahl Anrufe"}
