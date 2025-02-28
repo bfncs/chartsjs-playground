@@ -24,7 +24,7 @@ export const Panel: React.FC<Props> = ({
 			})}
 		>
 			<div className={styles.card}>
-				<h2>{title}</h2>
+				<h2 className={styles.title}>{title}</h2>
 				<div className={styles.kpiWrapper}>
 					{kpiValue && <span className={styles.kpiValue}>{kpiValue}</span>}
 					{kpiChange && (
