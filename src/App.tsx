@@ -40,9 +40,7 @@ function App() {
 			},
 		},
 		plugins: {
-			legend: {
-				display: false,
-			},
+			legend: {},
 			title: {
 				display: false,
 			},
@@ -141,6 +139,13 @@ function App() {
 						chartjs vorbei bauen
 					</li>
 				</ul>
+				<a
+					href="https://github.com/bfncs/chartsjs-playground"
+					target="_blank"
+					style={{ fontFamily: "monospace", fontSize: "2em" }}
+				>
+					🔗 Show me the code
+				</a>
 			</article>
 		</>
 	);
