@@ -101,6 +101,12 @@ function App() {
 					kpiChange={"+8%"}
 				>
 					<Bar options={options} data={data} />
+					<div>
+						<div>
+							<h3>Letzter Monat</h3>
+						</div>
+						<div></div>
+					</div>
 				</Panel>
 				<Panel
 					title={"Anzahl Anrufe"}
@@ -119,6 +125,23 @@ function App() {
 					<Bar options={options} data={data} />
 				</Panel>
 			</main>
+			<article>
+				<h3>Notizen</h3>
+				<ul>
+					<li>👍 performt gut, weil's auf Canvas rendert</li>
+					<li>👍 hat seeeeehr viele Optionen</li>
+					<li>
+						👎 nicht React-nativ gebaut, es gibt zwar 1 offiziellen
+						React-Wrapper, aber man muss immer 2 Stücke Doku im Kopf
+						zusammenführen
+					</li>
+					<li>
+						👎 sobald man aufwändiger customizen will (z.B. gap zwischen Teilen
+						eines Bars, eigene Legende) muss man 1 Plugin schreiben oder an
+						chartjs vorbei bauen
+					</li>
+				</ul>
+			</article>
 		</>
 	);
 }
